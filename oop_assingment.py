@@ -1,29 +1,28 @@
-'''
-BMB217-2022-fall-Quiz1
-Quiz kapsamında yapmanız gereken:
+'''Öğrenci Ad Soyad=ESAT CİHAN ÖZGÜLTEKİN
+Öğrenci No=20217170028
+Bölüm=Bilgisayar Mühendisliği
+Sınıf=1.grup'''
 
-Oncelikle urunler adinda bir sinif tanimlayiniz. 
-Urunler sinifi urun_adi, urun_alis_fiyati, urun_otv_orani, urun_kdv_orani ozelliklerine sahip olmalidir. 
-Urunler sinifi constructor kullanmalidir. Constructor içerisine sirayla
-urun_adi, urun_alis_fiyati, urun_otv_orani, urun_kdv_orani parametre olarak almalidir. 
-Urunler sinifi urun_satis_fiyati() adında bir methoda sahip olmalıdır. 
-urun_satis_fiyati() methodu kar_orani parametresine sahip olmalidir. 
-urun_satis_fiyati() methodu urunun karli ve vergilendirilmis fiyatini hesaplayarak dondurmelidir. 
-urun fiyati hesaplarken once kar sonra otv ve kdv sirayla alis fiyatina eklenmelidir. 
-
-
-
-hazırlayan @aucan
-
-Öğrenci Ad Soyad=
-Öğrenci No=
-Bölüm=
-Sınıf=
-'''
 
 class urunler:
-    #kodunuzu bu yorum satırını silerek buraya yazınız, diğer kısımları değiştirmeyiniz.
+    urun_adi=""
+    urun_alis_fiyati=0
+    urun_otv_orani=0
+    urun_kdv_orani=0
+
+    def _init_(self,urun_adi, urun_alis_fiyati, urun_otv_orani, urun_kdv_orani):
+        self.urun_adi=urun_adi
+        self.urun_alis_fiyati=urun_alis_fiyati
+        self.urun_otv_orani=urun_otv_orani
+        self.urun_kdv_orani=urun_kdv_orani
+
    
+    def  urun_satis_fiyati(self,kar_orani) :
+        toplam=0
+        toplam=self.urun_alis_fiyati+(self.urun_alis_fiyati*kar_orani)
+        toplam=toplam +(toplam*self.urun_otv_orani)
+        toplam=toplam+(toplam*self.urun_kdv_orani)
+        return toplam
         
     
 def sepet_fiyati(kar_orani):
@@ -41,7 +40,11 @@ def sepet_fiyati(kar_orani):
     yumurta=urunler('yumurta',5,0.30,0.19)
     toplam=0   
     #-------**-----------
-    #kodunuzu bu yorum satırını silerek buraya yazınız, diğer kısımları değiştirmeyiniz.
+    toplam+=ekmek.urun_satis_fiyati(kar_orani)
+    toplam+=patates.urun_satis_fiyati(kar_orani)
+    toplam+=elma.urun_satis_fiyati(kar_orani)
+    toplam+=un.urun_satis_fiyati(kar_orani)
+    toplam+=yumurta.urun_satis_fiyati(kar_orani)
     #-------**-----------
     return toplam
 
